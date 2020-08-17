@@ -1,0 +1,234 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline-style: none;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    background: url("./img/image1.png");
+    width: 100%;
+    background-repeat: repeat;
+}
+span,p{
+    font-size:14px !important;
+}
+button{
+    cursor: pointer;
+}
+.container{
+    width: 98%;
+    margin: 0 auto;
+    overflow: hidden;
+
+}
+.card
+{
+    height: auto;
+    width: 50%;
+    background: #fff;
+    border-radius: .2rem;
+    padding: 1rem 1rem .4rem 1rem;
+    margin: 1rem auto;
+}
+
+.marks-panel{
+padding: .5rem 0;
+margin: 1rem auto;
+background: #232B3D;
+border-radius: .2rem;
+text-align: center;
+}
+.marks-panel span{
+    color: #fff;
+    display: block;
+    font-weight: 500;
+}
+.marks-panel h1{
+    color: #fff;
+    opacity: 60%;
+    padding: .5rem 0;
+}
+
+.marks-panel .progressbar{
+    width: 95%;
+    height: .4rem;
+    margin: 1rem auto;
+    background: #3B4558;
+    border-radius: 1.5rem;
+}
+
+.progressbar .progress{
+    width: 100%;
+    height: 100%;
+    background: #F7B354;
+    border-radius:inherit;
+    box-shadow:  0px, 4px
+    rgba(0, 0, 0, 0.25);
+    transition:  width linear .4s;
+}
+
+
+
+
+
+/* User card styling */
+
+.user-card{
+    width: 100%;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+}
+
+.user{
+    border: 1px solid rgb(233, 233, 233);
+    border-radius: 4px;
+    display: flex;
+}
+.user .user-img{
+width: 50%;
+padding: .5rem;
+}
+.user-img img{
+    width: 30px;
+}
+.user-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.user-info span{
+    font-size: 1rem;
+    display: block;
+}
+.vote-container{
+    border: 1px solid rgb(233, 233, 233);
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    border-radius: .2rem;
+    padding: .1rem .5rem;
+    margin: 0 .2rem 0 0;
+}
+
+.vote-container button{
+    border: none;
+    background: none;
+    margin: 0 .3rem;
+}
+
+
+
+.redirect{
+    margin: 1rem auto;
+    text-align: center;
+}
+.redirect button{
+    border: none;
+    color: #fff;
+    background: #1E2A5A;
+    padding: .5rem 3rem;
+}
+
+.redirect span{
+    font-size: .6rem !important;
+    display: block;
+    margin:.5rem 0;
+    color: red;
+    font-weight: 500;
+}
+
+
+
+
+/* Leaderboard Styling */
+
+.leaderboard{
+   
+    width: 50%;
+    background: rgba(51, 51, 51, 0.644);
+    border-radius: .2rem;
+    padding: 1rem 1rem .4rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: all linear .4s;
+}
+.leaderboard h2{
+    text-align: center;
+    color: #26282c;
+    font-size: 1rem;
+    margin: 2rem auto;
+}
+.leaderboard .user-info{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 1rem;
+}
+.leaderboard .user-info .user{
+    border-radius: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 .5rem;
+}
+.leaderboard p{
+    font-size: 13px !important;
+    padding:0 .2rem ;
+}
+.leaderboard .user-text{
+    display: flex;
+    align-items: center;
+}
+.leaderboard .marks{
+    height: 2rem;
+    width: 2rem;
+    background: #1E2A5A;
+    border-radius: 50%;
+    text-align: center;
+}
+.marks span{
+    display: block;
+    line-height: 30px;
+    color: white;
+}
+
+
+/* Media queries */
+@media(max-width:650px){
+
+    p,span{
+        font-size: 12px !important;
+    }
+.user-card{
+    display: block;
+    margin: 1rem 0;
+}
+
+.user{
+ margin: 1rem 0;
+}
+.leaderboard .user-info{
+    display: block;
+  
+}
+
+}
+
+
+
+
+
+
+
+

@@ -137,3 +137,4 @@ const redirectToVote = () =>{
 viewBoard.onclick = redirectToBoard;
 backToVote.onclick = redirectToVote;
 
+// Change

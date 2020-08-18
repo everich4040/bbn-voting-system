@@ -141,12 +141,6 @@ padding: .5rem;
     color: red;
     font-weight: 500;
 }
-.userEviction {
-    margin: 1rem 0;
-    color: #18BBB6;
-    font-size: 13px !important;
-    font-weight: 500;
-}
 
 
 
@@ -208,6 +202,12 @@ padding: .5rem;
     color: white;
 }
 
+.leaderboard .userEviction {
+    margin: 1rem 0;
+    color: #18BBB6;
+    font-size: 13px !important;
+    font-weight: 500;
+}
 
 /* Media queries */
 @media(max-width:650px){

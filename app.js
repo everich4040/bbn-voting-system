@@ -122,6 +122,13 @@ const leaderboard = $(".leaderboard");
 
 let newUsers = [];
 const redirectToBoard = () => {
+  let errors = $(".error");
+  if(counters.totalMarks !== 0){
+
+    errors.innerHTML = "*Finish the vote";
+    return
+  }
+  errors.innerHTML = "";
   leaderboard.style.opacity = 1;
   leaderboard.style.pointerEvents = "auto";
   LeaderboardImgs.forEach((img) => {});

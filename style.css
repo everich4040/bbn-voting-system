@@ -141,7 +141,7 @@ padding: .5rem;
     color: red;
     font-weight: 500;
 }
-.userEviction {
+.userEviction p {
     margin: 1rem 0;
     color: #18BBB6;
     font-size: 13px !important;

@@ -202,7 +202,7 @@ padding: .5rem;
     color: white;
 }
 
-.leaderboard .userEviction {
+.leaderboard .userEviction p{
     margin: 1rem 0;
     color: #18BBB6;
     font-size: 13px !important;

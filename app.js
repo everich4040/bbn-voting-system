@@ -9,7 +9,7 @@ const userImages = $All(".user-img img");
 const progressBar = $(".progress");
 const LeaderboardImgs = $All(".leaderboard img");
 const LeaderboardNames = $All(".leaderboard .username");
-
+const eviction = $(".userEviction p")
 const counts = $All(".leaderboard span");
 
 const counters = { 
@@ -125,16 +125,46 @@ counts.forEach((count,index) =>{
 const viewBoard = $(".view");
 const backToVote = $(".back");
 const leaderboard = $(".leaderboard");
+
+
+
+
+
+//Sorting out according to position and votes
+
+
+
+let newUsers = [];
 const redirectToBoard = () =>{
     leaderboard.style.opacity = 1;
     leaderboard.style.pointerEvents = "auto";
+    LeaderboardImgs.forEach(img =>{
+     })
+     let users2 = counters.users.map(u => Object.assign({}, u));
+     let newUserMarks = []
+     users2.map((user,index)=>{
+         newUserMarks.push(user.votes);
+         newUserMarks.sort((a,b)=>b-a);
+        newUserMarks.includes(user.votes) ? newUsers.splice(newUserMarks.indexOf(user.votes), 0, user) : "";
+     })
+    //  console.log(newUsers)
+    newUsers.map((user,index,users)=>{
+        LeaderboardNames.forEach((username, ElementIndex)=>{
+            index == ElementIndex ? username.textContent = user.name :"";
+         })
+         LeaderboardImgs.forEach((userImg, ElementIndex)=>{
+            index == ElementIndex ? userImg.src= user.imgSrc :"";
+        
+         })
+         lastUser = users[users.length - 1].name
+         eviction.innerHTML = `${lastUser} was evicted`;
+    })
 }
 const redirectToVote = () =>{
     leaderboard.style.opacity = 0;
     leaderboard.style.pointerEvents = "none";
+    newUsers = [];
 }
 
 viewBoard.onclick = redirectToBoard;
 backToVote.onclick = redirectToVote;
-
-// Change

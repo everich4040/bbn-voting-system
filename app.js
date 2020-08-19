@@ -64,7 +64,6 @@ const inputError = $(".input-error");
 
 
 
-
 //Insert users in the option tag in the select tag
 
 contestants.users.map((user)=>{
@@ -212,3 +211,14 @@ const redirectToVote = () => {
 
 viewBoard.onclick = redirectToBoard;
 backToVote.onclick = redirectToVote;
+
+
+setInterval(function(){
+  if(contestants.totalMarks == 0){
+    addVote.disabled = true;
+    addVote.style.opacity = 0.4;
+  }else{
+    addVote.disabled = false;
+    addVote.style.opacity = 1;
+  }
+},10)

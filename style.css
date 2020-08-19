@@ -13,7 +13,7 @@ body {
 }
 
 span, p {
-    font-size: 14px !important;
+    font-size: 16px !important;
 }
 
 button {
@@ -71,6 +71,30 @@ button {
     box-shadow: 0px, 4px rgba(0, 0, 0, 0.25);
     transition: width linear .4s;
 }
+
+/* INput styling */
+.input-votes{
+    width: 98%;
+    margin: .5rem auto;
+    text-align: center;
+}
+
+.input-votes input{
+    border: none;
+    background: #e4e4e4;
+    padding: .5rem 2rem;
+    margin: .4rem .2rem;
+}
+.input-votes  button{
+    border: none;
+    padding: .5rem 2rem;
+    color: #fff;
+    background: #1E2A5A;
+}
+.input-votes .input-error{
+    color: red;
+}
+
 
 /* User card styling */
 
@@ -219,6 +243,19 @@ button {
 
 /* Media queries */
 
+
+@media (max-width:998px){
+    .input-votes{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .input-votes button{
+        width: 98%;
+        margin: .4rem auto;
+    }
+}
 @media(max-width:650px) {
     p, span {
         font-size: 12px !important;
@@ -243,5 +280,13 @@ button {
     }
     .leaderboard .user-info {
         display: block;
+    }
+}
+
+
+
+@media (max-width:460px){
+    .input-votes{
+        width: 100%;
     }
 }

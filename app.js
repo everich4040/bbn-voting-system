@@ -12,7 +12,7 @@ const LeaderboardNames = $All(".leaderboard .username");
 const eviction = $(".userEviction p");
 const counts = $All(".leaderboard span");
 
-const counters = {
+const contestants = {
   totalMarks: 100,
   users: [
     {
@@ -54,11 +54,52 @@ const counters = {
   ],
 };
 
-total.textContent = counters.totalMarks;
+total.textContent = contestants.totalMarks;
+
+//Input Validation
+const inputName = $(".name");
+const inputVote = $(".number-of-votes");
+const addVote = $(".add-vote");
+const inputError = $(".input-error");
+
+inputVote.onkeyup = function () {
+  this.value > contestants.totalMarks
+    ? (inputError.innerHTML = "vote should'nt be greater than the total marks")
+    : (inputError.innerHTML = "");
+};
+
+addVote.addEventListener("click", () => {
+ if(inputVote.value == "" || inputName.value == ""){
+ (inputError.textContent = "Please input a name and a number of votes")
+ return;
+ }else{
+  (inputError.value = "");
+ }
+  let UserNames = [];
+  contestants.users.map((user) => {
+    UserNames.push(user.name.toLowerCase());
+
+    if (UserNames.includes(inputName.value.toLowerCase())) {
+      if (user.name.toLowerCase() == inputName.value.toLowerCase()) {
+        user.votes += +inputVote.value;
+        contestants.totalMarks -= +inputVote.value;
+        progressBar.style.width = contestants.totalMarks + "%";
+        total.textContent = contestants.totalMarks;
+        userVotes.forEach((uservote, voteIndex) => {
+          user.id == voteIndex ? (uservote.textContent = user.votes) : "";
+          return;
+       });
+      }
+      inputName.value = "";
+       inputVote.value = "";
+       return;
+    } 
+  });
+});
 
 //Display username
 const displayUserInfo = () => {
-  counters.users.map((user) => {
+  contestants.users.map((user) => {
     userNames.forEach((username, ElementIndex) => {
       user.id == ElementIndex ? (username.textContent = user.name) : "";
     });
@@ -76,13 +117,13 @@ displayUserInfo();
 //Add vote to the user's score
 addBtn.forEach((btn, index) => {
   btn.addEventListener("click", () => {
-    counters.users.map((user, mapIndex, users) => {
-      if (counters.totalMarks == 0 || user.votes == 100) return;
+    contestants.users.map((user, mapIndex, users) => {
+      if (contestants.totalMarks == 0 || user.votes == 100) return;
       if (index === user.id) {
         users[index].votes++;
-        counters.totalMarks--;
-        total.textContent = counters.totalMarks;
-        progressBar.style.width = counters.totalMarks + "%";
+        contestants.totalMarks--;
+        total.textContent = contestants.totalMarks;
+        progressBar.style.width = contestants.totalMarks + "%";
       }
       userVotes.forEach((uservote, voteIndex) => {
         voteIndex == user.id ? (uservote.textContent = user.votes) : "";
@@ -94,13 +135,13 @@ addBtn.forEach((btn, index) => {
 //Subtract vote to the user's score
 subtractBtn.forEach((btn, index) => {
   btn.addEventListener("click", () => {
-    counters.users.map((user, mapIndex, users) => {
-      if (counters.totalMarks == 100 || user.votes == 0) return;
+    contestants.users.map((user, mapIndex, users) => {
+      if (contestants.totalMarks == 100 || user.votes == 0) return;
       if (index === user.id) {
-        counters.totalMarks++;
+        contestants.totalMarks++;
         users[index].votes--;
-        total.textContent = counters.totalMarks;
-        progressBar.style.width = counters.totalMarks + "%";
+        total.textContent = contestants.totalMarks;
+        progressBar.style.width = contestants.totalMarks + "%";
       }
       userVotes.forEach((uservote, voteIndex) => {
         voteIndex == user.id ? (uservote.textContent = user.votes) : "";
@@ -123,22 +164,22 @@ const leaderboard = $(".leaderboard");
 let newUsers = [];
 const redirectToBoard = () => {
   let errors = $(".error");
-  if(counters.totalMarks !== 0){
-
+  if (contestants.totalMarks !== 0) {
     errors.innerHTML = "*Finish the vote";
-    return
+    return;
   }
   errors.innerHTML = "";
   leaderboard.style.opacity = 1;
   leaderboard.style.pointerEvents = "auto";
-  LeaderboardImgs.forEach((img) => {});
-  let users2 = counters.users.map((u) => Object.assign({}, u));
-  let newUserMarks = [];
+  // LeaderboardImgs.forEach((img) => {});
+  let users2 = contestants.users.map((u) => Object.assign({}, u));
+  let userVotes = [];
   users2.map((user, index) => {
-    newUserMarks.push(user.votes);
-    newUserMarks.sort((a, b) => b - a);
-    newUserMarks.includes(user.votes)
-      ? newUsers.splice(newUserMarks.indexOf(user.votes), 0, user)
+    //4
+    userVotes.push(user.votes);
+    userVotes.sort((a, b) => b - a);
+    userVotes.includes(user.votes)
+      ? newUsers.splice(userVotes.indexOf(user.votes), 0, user)
       : "";
   });
   //  console.log(newUsers)

@@ -79,7 +79,7 @@ button {
     text-align: center;
 }
 
-.input-votes input{
+.input-votes input, select{
     border: none;
     background: #e4e4e4;
     padding: .5rem 2rem;

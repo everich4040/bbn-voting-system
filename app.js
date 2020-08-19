@@ -57,10 +57,26 @@ const contestants = {
 total.textContent = contestants.totalMarks;
 
 //Input Validation
-const inputName = $(".name");
+const selectName = $(".name");
 const inputVote = $(".number-of-votes");
 const addVote = $(".add-vote");
 const inputError = $(".input-error");
+
+
+
+
+//Insert users in the option tag in the select tag
+
+contestants.users.map((user)=>{
+  let option = document.createElement("option");
+  option.value = user.name;
+  option.innerHTML = user.name;
+  selectName.appendChild(option)
+})
+
+selectName.onchange = function(){
+  
+}
 
 inputVote.onkeyup = function () {
   this.value > contestants.totalMarks
@@ -69,31 +85,25 @@ inputVote.onkeyup = function () {
 };
 
 addVote.addEventListener("click", () => {
- if(inputVote.value == "" || inputName.value == ""){
+ if(inputVote.value == "" || selectName.value == ""){
  (inputError.textContent = "Please input a name and a number of votes")
  return;
  }else{
   (inputError.value = "");
  }
-  let UserNames = [];
   contestants.users.map((user) => {
-    UserNames.push(user.name.toLowerCase());
-
-    if (UserNames.includes(inputName.value.toLowerCase())) {
-      if (user.name.toLowerCase() == inputName.value.toLowerCase()) {
+      if (user.name == selectName.value) {
         user.votes += +inputVote.value;
         contestants.totalMarks -= +inputVote.value;
         progressBar.style.width = contestants.totalMarks + "%";
         total.textContent = contestants.totalMarks;
         userVotes.forEach((uservote, voteIndex) => {
           user.id == voteIndex ? (uservote.textContent = user.votes) : "";
-          return;
        });
+        selectName.value = "";
+       inputVote.value = "";  
       }
-      inputName.value = "";
-       inputVote.value = "";
-       return;
-    } 
+        
   });
 });
 
